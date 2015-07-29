@@ -1,0 +1,106 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" name="employeeForm" role="form" novalidate ng-submit="submitForm()">
+        <fieldset>
+            <legend>Basic Information</legend>
+
+            <div class="form-group" ng-class="{ 'has-error': employeeForm.fullName.$invalid && employeeForm.fullName.$dirty }">
+                <label for="fullName" class="col-sm-3 control-label">Name:</label>
+                <div class="col-sm-9">
+                    <input type="text" id="fullName" name="fullName" class="form-control" ng-required="shouldShowFullName()" ng-model="editableEmployee.fullName">
+                    <span class="help-block" ng-show="employeeForm.fullName.$error.required && employeeForm.fullName.$dirty"> Full Name is Required </span>
+                </div>
+            </div>
+            <div class="form-group" show-errors ng-class="{ 'has-error': employeeForm.email.$invalid && employeeForm.email.$touched }">
+                <label for="email" class="col-sm-3 control-label">Email:</label>
+                <div class="col-sm-9">
+                    <input type="text" id="email" name="email" class="form-control" ng-required="true" ng-model="editableEmployee.email ">
+                    <span class="help-block hide"> Email is Required </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes" class="col-sm-3 control-label">Notes:</label>
+                <div class="col-sm-9">
+                    <textarea id="notes" name="notes" class="form-control" ng-model="editableEmployee.notes" rows="5" cols="40"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="department" class="col-sm-3 control-label">Department:</label>
+                <div class="col-sm-9">
+                    <select name="department" id="department" class="form-control"
+                            ng-model="editableEmployee.department"
+                            ng-options="dept for dept in departments"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateHired" class="col-sm-3 control-label">Date Hired:</label>
+                <div class="col-sm-9">
+                    <datepicker ng-model="editableEmployee.dateHired">
+
+                    </datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="breakTime" class="col-sm-3 control-label">Break Time:</label>
+                <div class="col-sm-9">
+                    <timepicker name="breakTime" ng-model="editableEmployee.breakTime">
+
+                    </timepicker>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+        <fieldset>
+            <legend>Perks</legend>
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <!--<span><b>Perks</b></span>-->
+                    <br />
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar" />Company Car</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock" />Company Stock</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeeks" />perk Six Weeks</label>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+        <fieldset>
+            <legend>Payroll Type</legend>
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <!--<span><b>Payroll Type</b></span>-->
+                    <div class="radio">
+                        <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType" />w-2</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType" />1099</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType" />none</label>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+    </div>
+
+
+<div class="modal-footer">
+    <div class="col-sm-offset-3 col-sm-9">
+        <input type="submit" value="Submit" class="btn btn-primary"  /> <!--ng-disabled="employeeForm.$invalid"-->
+        <input type="button" value="Cancel" class="btn btn-warning" ng-click="cancelForm()" />
+    </div>
+</div>
