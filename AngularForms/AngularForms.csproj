@@ -132,6 +132,7 @@
     <Content Include="app\Services\addToken.js" />
     <Content Include="app\Services\CurrentUser.js" />
     <Content Include="app\Services\formEncode.js" />
+    <Content Include="app\Services\localStorage.js" />
     <Content Include="app\Services\loginRedirect.js" />
     <Content Include="app\Services\oauth.js" />
     <Content Include="app\Views\orderDetails.html" />
