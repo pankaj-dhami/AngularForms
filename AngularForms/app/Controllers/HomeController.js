@@ -16,7 +16,7 @@
             //    controller: "efController"
 
             //});
-            $location.path("/updateEmployeeForm/123");
+            $location.path("/getorders");
         };
         
     }

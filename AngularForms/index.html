@@ -9,14 +9,39 @@
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
 
     <script src="app/app.js"></script>
+    <script src="app/Services/formEncode.js"></script>
+    <script src="app/Services/oauth.js"></script>
     <script src="app/Directives/ValidationDirective.js"></script>
     <script src="app/Directives/efDirective.js"></script>
     <script src="app/Services/efService.js"></script>
     <script src="app/Controllers/efController.js"></script>
+    <script src="app/Services/CurrentUser.js"></script>
+    <script src="app/Services/addToken.js"></script>
+    <script src="app/Services/loginRedirect.js"></script>
     <script src="app/Controllers/HomeController.js"></script>
+    <script src="app/Controllers/LoginController.js"></script>
+    <script src="app/Controllers/orderController.js"></script>
 </head>
 <body class="container">
     <h1>Start Page</h1>
+    <div ng-controller="LoginController as login">
+        <div ng-show="login.user.loggedIn" class="navbar-text navbar-right">
+            Hello {{ login.user.userName}}
+        </div>
+        <form ng-if="!login.user.loggedIn" name="loginForm" class="navbar-form navbar-right"
+              ng-submit="login.loginSubmit(loginForm)">
+            <div class="form-group">
+                <input name="userName" type="text" placeholder="UserName" ng-model="login.userName" />
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" placeholder="Password" ng-model="login.password" />
+            </div>
+            <input type="submit" class="btn btn-default btn-sm" value="Login" />
+
+
+        </form>
+
+    </div>
 
     <div ng-view></div>
 </body>

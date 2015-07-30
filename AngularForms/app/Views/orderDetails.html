@@ -1,0 +1,23 @@
+﻿
+<div>
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>CustomerName</th>
+                <th>ShipperCity</th>
+                <th>IsShipped</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='repo in repos'>
+                <td>{{repo.orderID}} </td>
+                <td>{{repo.customerName}} </td>
+                <td>{{repo.shipperCity}} </td>
+                <td>{{repo.isShipped}} </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
