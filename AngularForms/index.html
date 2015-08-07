@@ -19,6 +19,7 @@
     <script src="app/Services/addToken.js"></script>
     <script src="app/Services/loginRedirect.js"></script>
     <script src="app/Services/localStorage.js"></script>
+    <script src="app/Services/exceptionHandler.js"></script>
     <script src="app/Controllers/HomeController.js"></script>
     <script src="app/Controllers/LoginController.js"></script>
     <script src="app/Controllers/orderController.js"></script>
@@ -26,10 +27,10 @@
 <body class="container">
     <h1>Start Page</h1>
     <div ng-controller="LoginController as login">
-        <div ng-show="login.user.loggedIn" class="navbar-text navbar-right">
+        <div ng-show="login.isLoggedIn()" class="navbar-text navbar-right">
             Hello {{ login.user.userName}}
         </div>
-        <form ng-if="!login.user.loggedIn" name="loginForm" class="navbar-form navbar-right"
+        <form ng-hide="login.isLoggedIn()" name="loginForm" class="navbar-form navbar-right"
               ng-submit="login.loginSubmit(loginForm)">
             <div class="form-group">
                 <input name="userName" type="text" placeholder="UserName" ng-model="login.userName" />

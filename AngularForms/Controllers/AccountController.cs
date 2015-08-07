@@ -1,9 +1,11 @@
 ﻿using AngularForms.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -40,6 +42,24 @@ namespace AngularForms.Controllers
         {
             return Ok(Order.CreateOrders());
         }
+
+        [HttpGet]
+        [Route("ExportSummary/{projectID}")]
+        public HttpResponseMessage ExportSummary(int projectID)
+        {
+            var path = @"C:\Temp\SummaryExport08_07_2015.xlsx";
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(path, FileMode.Open);
+            result.Content = new StreamContent(stream);
+            result.Content.Headers.ContentType =
+                new MediaTypeHeaderValue("application/octet-stream");
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = "excelname" + ".xlsx"
+            };
+            return result;
+        }
+
         public class Order
         {
             public int OrderID { get; set; }
@@ -61,5 +81,6 @@ namespace AngularForms.Controllers
                 return OrderList;
             }
         }
+
     }
 }

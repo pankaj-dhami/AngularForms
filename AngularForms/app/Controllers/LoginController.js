@@ -16,8 +16,13 @@
                 oauthService.login(model.userName, model.password)
                 .then(onSuccess)
 
-                form.$setUntoched();
+               // form.$setUntoched();
             }
+        }
+
+        model.isLoggedIn = function () {
+
+            return currentUser.isLoggedIn();
         }
     }
 

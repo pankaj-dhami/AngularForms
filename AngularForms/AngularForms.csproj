@@ -130,7 +130,9 @@
     <Content Include="app\Controllers\orderController.js" />
     <Content Include="app\Directives\ValidationDirective.js" />
     <Content Include="app\Services\addToken.js" />
+    <Content Include="app\Services\alerting.js" />
     <Content Include="app\Services\CurrentUser.js" />
+    <Content Include="app\Services\exceptionHandler.js" />
     <Content Include="app\Services\formEncode.js" />
     <Content Include="app\Services\localStorage.js" />
     <Content Include="app\Services\loginRedirect.js" />

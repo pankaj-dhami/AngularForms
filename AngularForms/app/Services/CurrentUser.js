@@ -10,15 +10,14 @@
 
             var user = {
 
-                userName: "",
-                token: "",
+                userName: null,
+                token: null,
                 get loggedIn() {
                     return this.token;
                 }
             };
             var localUser = localStorage.get(userkey);
             if (localUser) {
-
                 user.userName = localUser.userName;
                 user.token = localUser.token;
             }
@@ -35,9 +34,21 @@
             localStorage.add(userkey, profile);
         };
 
+        var isLoggedIn = function () {
+            var localUser = localStorage.get(userkey);
+            if (localUser) {
+
+                return true;
+            }
+            return false;
+
+        };
+
         return {
             profile: profile,
-            setProfile: setProfile
+            setProfile: setProfile,
+            userkey: userkey,
+            isLoggedIn: isLoggedIn
         };
     };
 

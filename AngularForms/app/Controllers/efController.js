@@ -41,8 +41,8 @@
         };
         $scope.cancelForm = function () {
            // $modalInstance.dismiss('cancel');
-            $window.history.back();
-
+           // $window.history.back();
+            throw new Error("something gone wrong.");
         };
 
         $scope.shouldShowFullName = function () {

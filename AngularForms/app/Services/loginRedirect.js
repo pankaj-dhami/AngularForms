@@ -2,7 +2,7 @@
 
     var app = angular.module('AngularForms');
 
-    var loginRedirect = function ($q, $location) {
+    var loginRedirect = function ($q, $location, currentUser, localStorage) {
 
         var lastPath = "/";
 
@@ -10,6 +10,7 @@
 
             if (response.status == 401) {
                 lastPath = $location.path();
+                localStorage.remove(currentUser.userkey);
                 $location.path('/home');
             }
             return $q.reject(response);
